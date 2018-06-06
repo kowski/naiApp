@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<head>
+    <head>
+        <title>Add shop</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+<body>
+<div class="row">
+
+    <form class="col-md-2 col-md-offset-5" action="#" th:action="@{/add_shop}" method="post"
+          th:object="${shop}">
+        <h2>Create shop:</h2>
+        Name:
+        <td><input class="form-control" type="text" th:field="*{name}" name='name'/></td>
+
+        City:
+        <td><input class="form-control" type="text" th:field="*{city}" name='city'/></td>
+
+        Owner:
+        <td><select class="form-control" th:field="*{shopOwner.id}" name="shopOwner" style="width:130px">
+            <div th:each="shopOwner : ${owners}">
+                <option th:value="${shopOwner.id}"><span th:text="${shopOwner.id} +' ' +${shopOwner.address}"></span>
+                </option>
+            </div>
+        </select></td>
+        <button type="submit" value="Submit" class="btn">Submit</button>
+
+    </form>
+</div>
+</body>
+</html>
