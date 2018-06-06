@@ -12,40 +12,53 @@
     <meta charset="UTF-8">
     <title>Shops</title>
 </head>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-    $(function () {
-        $("#header").load("header.html");
-    });
-</script>
 <body>
-<a href="/shop/add_shop">Add new shop</a>
+
+<span th:text="#{lang.change}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{lang.eng}"></option>
+    <option value="pl" th:text="#{lang.pl}"></option>
+</select>
+
 <div class="row">
+    <a href="/shop/add_shop" th:text="#{addshop}"></a>
     <div class="col-md-6 col-md-offset-3">
-    <table class="table ">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Shop name</th>
-            <th scope="col">Owner name</th>
-            <th scope="col">Owner surname</th>
-        </tr>
-        </thead>
-        <tbody>
-        <div th:each="shop : ${shops}">
+        <table class="table ">
+            <thead>
             <tr>
-                <td><span th:text="${shop.id}"></span></td>
-                <td><span th:text="${shop.name}"></span></td>
-                <td><span th:text="${shop.shopOwner.name}"></span></td>
-                <td><span th:text="${shop.shopOwner.surname}"></span></td>
-                <td><span th:text="${shop.shopOwner.phoneNumb}"></span></td>
-                <td><span><a th:href="@{/shop/delete(id=${shop.id})}"> Delete</a></span></td>
-                <td><span><a th:href="@{/shop/edit(id=${shop.id})}"> Edit</a></span></td>
+                <th scope="col">#</th>
+                <th scope="col">Shop name</th>
+                <th scope="col">Owner name</th>
+                <th scope="col">Owner surname</th>
             </tr>
-        </div>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <div th:each="shop : ${shops}">
+                <tr>
+                    <td><span th:text="${shop.id}"></span></td>
+                    <td><span th:text="${shop.name}"></span></td>
+                    <td><span th:text="${shop.shopOwner.name}"></span></td>
+                    <td><span th:text="${shop.shopOwner.surname}"></span></td>
+                    <td><span th:text="${shop.shopOwner.phoneNumb}"></span></td>
+                    <td><span><a th:href="@{/shop/delete(id=${shop.id})}"> Delete</a></span></td>
+                    <td><span><a th:href="@{/shop/edit(id=${shop.id})}"> Edit</a></span></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption !== '') {
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+</script>
