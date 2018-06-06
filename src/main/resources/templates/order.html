@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<h1>Orders</h1>
+<a href="/add_order">Add new order</a>
+<div th:each="order : ${orders}">
+    <span th:text="${order.id}"></span>
+    <span th:text="${order.orderDate}"></span>
+    Products:
+    <span th:each="prod: ${order.productList}">
+        <span th:text="${prod.name}"></span>
+    </span>
+
+</div>
+
+</body>
+</html>

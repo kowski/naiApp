@@ -31,6 +31,12 @@ public class SupplierController {
     @PostMapping("/supplier")
     @ResponseBody
     public void createSupplier(@RequestBody Supplier supplier) {
+        supplierService.createSupplier(supplier);
+    }
 
+    @DeleteMapping("/supplier/{id}")
+    @ResponseBody
+    public void deleteSupplier(@PathVariable("id") int id) {
+        supplierService.deleteSupplier(id);
     }
 }

@@ -12,7 +12,8 @@ import pl.lodz.uni.math.naiApp.interceptor.LogInterceptor;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/supplier/**").allowedOrigins("http://localhost:3000");
+        registry.addMapping("/supplier/**").allowedOrigins("http://localhost:3000").allowedMethods("DELETE","GET","POST");
+        registry.addMapping("/").allowedOrigins("http://localhost:3000").allowedMethods("DELETE","GET","POST");
     }
 
     @Override
