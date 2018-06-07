@@ -18,4 +18,7 @@ public class OrderService {
     public List<Order> getAllOrders() {
         return orderMapper.getAllOrders();
     }
+    public Integer getOrderCount(){
+        return orderMapper.getOrderCount();
+    }
 }

@@ -33,4 +33,7 @@ public interface OrderMapper {
 
     @Select("Select id, company_name,contact_number, city from supplier where id=#{id}")
     Supplier getSupplier(Integer id);
+
+    @Select("Select count(*) FROM orders")
+    Integer getOrderCount();
 }
