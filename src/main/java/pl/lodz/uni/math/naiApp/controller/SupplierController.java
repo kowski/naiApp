@@ -29,9 +29,15 @@ public class SupplierController {
     }
 
     @PostMapping("/supplier")
-    @ResponseBody
-    public void createSupplier(@RequestBody Supplier supplier) {
+    public String createSupplier(@RequestBody Supplier supplier) {
         supplierService.createSupplier(supplier);
+        return "redirect:/supplier";
+    }
+
+    @PutMapping("/supplier")
+    public String updateSupplier(@RequestBody Supplier supplier) {
+        supplierService.updateSupplier(supplier);
+        return "redirect:/supplier";
     }
 
     @DeleteMapping("/supplier/{id}")

@@ -28,9 +28,11 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Shop name</th>
-                <th scope="col">Owner name</th>
-                <th scope="col">Owner surname</th>
+                <th scope="col" th:text="#{shop.name}"></th>
+                <th scope="col" th:text="#{shop.city}"></th>
+                <th scope="col" th:text="#{owner.name}"></th>
+                <th scope="col" th:text="#{owner.sur}"></th>
+                <th scope="col" th:text="#{owner.numb}"></th>
             </tr>
             </thead>
             <tbody>
@@ -38,11 +40,12 @@
                 <tr>
                     <td><span th:text="${shop.id}"></span></td>
                     <td><span th:text="${shop.name}"></span></td>
+                    <td><span th:text="${shop.city}"></span></td>
                     <td><span th:text="${shop.shopOwner.name}"></span></td>
                     <td><span th:text="${shop.shopOwner.surname}"></span></td>
                     <td><span th:text="${shop.shopOwner.phoneNumb}"></span></td>
-                    <td><span><a th:href="@{/shop/delete(id=${shop.id})}"> Delete</a></span></td>
-                    <td><span><a th:href="@{/shop/edit(id=${shop.id})}"> Edit</a></span></td>
+                    <td><span><a th:text="#{bt.delete}" th:href="@{/shop/delete(id=${shop.id})}"> Delete</a></span></td>
+                    <td><span><a th:text="#{bt.edit}" th:href="@{/shop/edit(id=${shop.id})}"> Edit</a></span></td>
                 </tr>
             </div>
             </tbody>
